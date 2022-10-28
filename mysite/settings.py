@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'newsletter.apps.NewsletterConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,11 +74,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+# uri = os.getenv('DATABASE_URL')
+
+# result = urlparse(uri)
+
+# database = result.path[1:]
+# user = result.username
+# password = result.password
+# host = result.hostname
+# port = result.port
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  'django_db',
+        'USER': 'sonali_user',
+        'PASSWORD': 'sonali',
+        'HOST': 'localhost',
+        'PORT': 5433
     }
 }
 
