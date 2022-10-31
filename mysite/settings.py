@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from urllib.parse import urlparse
+
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,16 +78,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
-# uri = os.getenv('DATABASE_URL')
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+uri = os.getenv('DATABASE_URL')
 
-# result = urlparse(uri)
+result = urlparse(uri)
 
-# database = result.path[1:]
-# user = result.username
-# password = result.password
-# host = result.hostname
-# port = result.port
+database = result.path[1:]
+user = result.username
+password = result.password
+host = result.hostname
+port = result.port
 
 DATABASES = {
     'default': {
